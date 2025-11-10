@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Unit Converter</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Smart Unit Converter</h1>
+      <div class="controls">
+        <button id="darkToggle">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>General Units</h2>
+        <div class="grid">
+          <div class="unit-block">
+            <label>Category</label>
+            <select id="category">
+              <option value="length">Length</option>
+              <option value="weight">Weight</option>
+              <option value="temperature">Temperature</option>
+              <option value="time">Time</option>
+            </select>
+          </div>
+
+          <div class="unit-block">
+            <label>From</label>
+            <select id="fromUnit"></select>
+          </div>
+
+          <div class="unit-block">
+            <label>To</label>
+            <select id="toUnit"></select>
+          </div>
+
+          <div class="unit-block">
+            <label>Value</label>
+            <input id="unitValue" type="number" step="any" value="1" />
+          </div>
+
+          <div class="unit-block full">
+            <label>&nbsp;</label>
+            <div class="result-row">
+              <button id="convertUnit">Convert</button>
+              <div id="unitResult" class="result">—</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Currency Converter (Live)</h2>
+        <div class="grid">
+          <div class="unit-block">
+            <label>From</label>
+            <select id="curFrom"></select>
+          </div>
+
+          <div class="unit-block">
+            <label>To</label>
+            <select id="curTo"></select>
+          </div>
+
+          <div class="unit-block">
+            <label>Amount</label>
+            <input id="curAmount" type="number" step="any" value="1" />
+          </div>
+
+          <div class="unit-block full">
+            <label>&nbsp;</label>
+            <div class="result-row">
+              <button id="convertCurrency">Convert Currency</button>
+              <div id="curResult" class="result">—</div>
+            </div>
+            <small class="hint">Note: You must set <code>EXRATE_API_KEY</code> on the server (ExchangeRate API free tier).</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>History</h2>
+        <div id="historyList" class="history"></div>
+        <div class="history-actions">
+          <button id="clearHistory">Clear History</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Built by you — deploy to Render or GitHub Pages (backend needs Render). </small>
+    </footer>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
