@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, jsonify
 import requests
 import os
 import time
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
+CORS(app)
 
 # Config: set your API key as environment variable EXRATE_API_KEY
 # e.g. export EXRATE_API_KEY="your_key_here"
