@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     $("curResult").innerText = "Loading...";
     try {
       const q = new URLSearchParams({ from, to, amount });
-      const resp = await fetch(`https://unit-converter-backend.onrender.com/api/convert-currency?${q}`);
+      const resp = await fetch(`https://unit-converter-1.onrender.com/api/convert-currency?${q}`);
       const data = await resp.json();
       if (!resp.ok || !data.success) {
         $("curResult").innerText = `Error: ${data.error ? JSON.stringify(data.error) : "unknown"}`;
