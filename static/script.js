@@ -1,4 +1,3 @@
-// Basic units definition and conversion functions
 const UNITS = {
   length: {
     base: "meter",
@@ -36,8 +35,6 @@ const UNITS = {
     }
   }
 };
-
-// 💰 Currency list (for dropdowns)
 const CURRENCIES = [
   "USD", "EUR", "INR", "GBP", "JPY", "CAD", "AUD", "CHF", "CNY", "SGD",
   "NZD", "KRW", "SEK", "NOK", "ZAR", "AED", "SAR", "HKD", "THB", "IDR"
@@ -68,8 +65,6 @@ function populateUnitSelects(category) {
 }
 
 function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-
-// conversion functions
 function convertValue(category, val, from, to) {
   if (category === "temperature") {
     return convertTemperature(val, from, to);
@@ -94,8 +89,6 @@ function convertTemperature(val, from, to) {
 
   return out;
 }
-
-// main DOM logic
 document.addEventListener("DOMContentLoaded", () => {
   const category = $("category");
   populateUnitSelects(category.value);
@@ -103,8 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", () => {
     populateUnitSelects(category.value);
   });
-
-  // 🪙 Populate currency dropdowns
   const curFrom = $("curFrom");
   const curTo = $("curTo");
   CURRENCIES.forEach(c => {
@@ -198,8 +189,6 @@ function renderHistory() {
     container.appendChild(el);
   });
 }
-
-// 🪄 Replay Function (new)
 function replay(index) {
   const arr = JSON.parse(localStorage.getItem("uc_history") || "[]");
   const it = arr[index];
