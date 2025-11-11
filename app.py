@@ -7,15 +7,10 @@ from flask_cors import CORS
 app = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(app)
 
-# Config: set your API key as environment variable EXRATE_API_KEY
-# e.g. export EXRATE_API_KEY="your_key_here"
-API_KEY = os.getenv("EXRATE_API_KEY", "").strip()
-# Example url format:
-# https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/USD
 
-# Simple in-memory cache to reduce API calls { base_currency: (timestamp, rates_dict) }
+API_KEY = os.getenv("EXRATE_API_KEY", "").strip()
 CACHE = {}
-CACHE_TTL = 60 * 5  # cache for 5 minutes
+CACHE_TTL = 60 * 5
 
 
 def get_rates(base="USD"):
