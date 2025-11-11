@@ -1,13 +1,13 @@
-# Hide environment variables
+
 .env
 
-# Python cache
+
 __pycache__/
 *.pyc
 
-# Virtual environment
+
 venv/
 
-# Editor junk
+
 .vscode/
 .idea/
