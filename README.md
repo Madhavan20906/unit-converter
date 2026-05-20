@@ -22,28 +22,7 @@ Perform high-precision conversions across four essential categories with instant
 *   **Conversion History & Replay:** Saves up to 50 previous conversions in the browser's `localStorage`. Re-run any past calculation with a single click of the "Replay" button.
 *   **Responsive Layouts:** Designed with CSS Grid and Media Queries for seamless use across desktop, tablet, and mobile screens.
 ---
-## 🏗️ Architecture & Data Flow
-Below is the simple and efficient data flow diagram of the application:
-```mermaid
-graph TD
-    User([User Interface]) -->|General Units| LocalCalc[Local JS Conversion Engine]
-    User -->|Currency Request| BEAPI[Flask Backend API]
-    
-    subgraph Backend Server (Flask)
-        BEAPI --> CacheCheck{Cache Active & TTL < 5m?}
-        CacheCheck -->|Yes| ReadCache[Return Cached Rates]
-        CacheCheck -->|No| FetchAPI[Request ExchangeRate-API]
-        FetchAPI --> UpdateCache[Update Local TTL Cache]
-        UpdateCache --> ReturnRates[Compute & Return Live Rate JSON]
-        ReadCache --> ReturnRates
-    end
-    
-    ReturnRates -->|Render Result| User
-    LocalCalc -->|Render Result| User
-    User -->|Save Event| LocalStorage[(Browser LocalStorage)]
-    LocalStorage -.->|Replay Action| User
-```
----
+
 ## 🛠️ Technology Stack
 *   **Frontend:** HTML5, Modern Vanilla CSS (Variables, Flexbox, Grid), JavaScript (ES6+ Fetch & LocalStorage)
 *   **Backend:** Python 3.x, Flask (Microframework), Flask-CORS (Cross-Origin Resource Sharing)
